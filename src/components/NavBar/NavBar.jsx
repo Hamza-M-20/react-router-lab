@@ -1,6 +1,6 @@
 
-import { BrowserRouter } from "react-router";
-import { Link } from "react-router";
+import { BrowserRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 const NavBar = (props) => {
     return (
         <nav className="nav-links">
@@ -8,6 +8,7 @@ const NavBar = (props) => {
          <li> <Link to="/">Home</Link> </li>
          <li> <Link to="/mailboxes">Mailboxes</Link> </li>
          <li> <Link to="/new-mailbox">New Mailbox</Link> </li>
+         <li> <Link to="/new-Letter">New Letter</Link></li>
                 
             </ul>
         </nav>

@@ -1,21 +1,21 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 const MailboxForm = (props) => {
   const [boxOwner, setBoxOwner] = useState("");
   const [boxSize, setBoxSize] = useState("Small");
   const navigate = useNavigate();
-  const handleform = (e) => {
+  const handleSubmit = (e) => {
         e.preventDefault();
-        const newMailbox = {
+        const boxData = {
             boxOwner,
             boxSize,
         };
     
-    props.onAdd(newMailbox); 
-    navigate("/mailboxes");
+  props.onAdd(boxData);
+  navigate("/mailboxes");
 };
     return (
- <form onSubmit={handleform}>
+ <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="boxOwner">Box Owner:</label>
         <input
