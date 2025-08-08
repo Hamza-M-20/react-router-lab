@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const LetterForm = (props) => {
+const LetterForm = ({mailboxes, onSendLetter}) => {
 const [selectedBox, setSelectedBox] = useState("");
 const [recipient, setRecipient] = useState("");
  const [message, setMessage] = useState("");

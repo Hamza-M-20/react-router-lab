@@ -11,24 +11,24 @@ import LetterForm from './components/LetterForm/LetterForm'
 
 
 const App = () => {
+   const [mailboxes, setMailboxes] = useState([]);
   const [letters, setLetters] = useState([]);
-  const [mailboxes, setMailboxes] = useState([]);
-  const addLetter = () => {
-    setLetters((prev) => [...prev, setLetters]);
-  }
-  const sendLetter = (newLetter) => {
-  setLetters((prev) => [...prev, newLetter]);
-  
+
   const addBox = (boxData) => {
     const newMailbox = {
       ...boxData,
       _id: mailboxes.length +1,
     };
 setMailboxes((prev) => [...prev, newMailbox]);
-  }
+  };
+ 
+  const sendLetter = (newLetter) => {
+  setLetters((prev) => [...prev, newLetter]);
+  };
+  
   return (
     <>
-    <BrowserRouter>
+    
      <NavBar />
     <h1>Mailbox List</h1>
    <Routes>
@@ -36,15 +36,15 @@ setMailboxes((prev) => [...prev, newMailbox]);
     <Route path='/mailboxes' element={<MailboxList mailboxes={mailboxes}/>} />
        <Route path="/mailboxes/:mailboxId"element={<MailboxDetails mailboxes={mailboxes} letters={letters} />} />
     <Route path='/new-mailbox' element={<MailboxForm onAdd={addBox}/>} />
-    <Route path="/new-letter" element={<LetterForm onSendLetter={sendLetter}/>} />
+    <Route path="/new-letter" element={<LetterForm mailboxes={mailboxes} onSendLetter={sendLetter}/>} />
 
    </Routes>
-   </BrowserRouter>
+  
     </>
     
   )
 }
-}
+
   
   
 
